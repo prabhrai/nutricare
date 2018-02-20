@@ -1,0 +1,8 @@
+.pad10 {
+    padding: 25px !important;
+    margin-top: 20px;
+}
+
+.border {
+    border: 2px solid red;
+}

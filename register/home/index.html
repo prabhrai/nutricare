@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutricare Food & Exercice</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+    <script src="../../../javascript/jquery-3.2.1.js"></script>
+    <script src="../../../javascript/main.js"></script>
+    <script>
+        function myFunction() {
+            var greeting;
+            var time = new Date().getHours();
+            if (time < 10) {
+                greeting = "Good morning";
+            } else if (time < 20) {
+                greeting = "Good day";
+            } else {
+                greeting = "Good evening";
+            }
+            document.getElementById("demo").innerHTML = greeting;
+        }
+    </script>
+</head>
+<body onload="loadPage('Home');">
+    <!-- _____________________________________________________________________ nav __________________  -->
+    <nav class="navbar is-light">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://nutricare.000webhostapp.com">
+                <h1 style="color:#00D1B2; font-weight:bolder; font-size:30px;font-style:italic;">NutriCare</h1>
+            </a>
+            <!--<div class="navbar-burger burger" data-target="navMenuColorlight-example">-->
+            <!--    <span></span>-->
+            <!--    <span></span>-->
+            <!--    <span></span>-->
+            <!--</div>-->
+        </div>
+        <div id="navMenuColorlight-example" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="https://nutricare.000webhostapp.com" style="color:black;font-size:20px;">
+                    <span class="icon">
+                        <i class="fa fa-home"></i>
+                    </span>
+                    Home
+                </a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="field is-grouped">
+                        <p class="control">
+                            <a class="button is-warning" href="../index.html">
+                                <span class="icon">
+                                    <i class="fa  fa-sign-out "></i>
+                                </span>
+                                <span>Logout</span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- _____________________________________________________________________ BODY START ____________________________________  -->
+    <section class="section" >
+        <div class="container">
+            <div class="notification" style="text-align: center; font-size: 25px;">
+                <p>
+                    <strong> NutriCare</strong>
+                </p>
+            </div>
+            <!-- Div holding Text Fields -->
+            <div class="columns">
+                <div class="column is-5">
+                    <!-- style="text-align:center;" -->
+                    <div style=" margin-left: 15%; ">
+                        <div class="control">
+                            <!-- _____________________________________________________________________ Food ____________________________________  -->
+                            <label class="label">Food</label>
+                            <div id="food_list" class="select is-primary">
+                                <select id="food_item_list" class="is-focused" style="width:250px" onchange="setCalories();">
+                                    <!--<option>List of food items appear here</option>-->
+                                </select>
+                            </div>
+                        </div>
+                        <!--</div>-->
+                        <!--</select>-->
+                        <!-- _____________________________________________________________________ Quantity ____________________________________  -->
+                        <div class="field">
+                            <br/>
+                            <label class="label">Quantity</label>
+                            <div class="control">
+                                <input id="Quantity" class="input" type="text" value="1" style="width:250px" readonly>
+                                <!--  -->
+                                <img id="add1" src="../images/plus.png" width="32" height="25" class="add" />
+                                <img id="minus1" src="../images/minus.png" width="32" height="25" class="minus" />
+                            </div>
+                            <div class="field">
+                                <br/>
+                                <label class="label">Calories</label>
+                                <div class="control">
+                                    <input id="Calories" class="input" type="text" placeholder="125" style="width:250px" readonly>
+                                </div>
+                            </div>
+                            <!-- _____________________________________________________________________ Preferred ____________________________________  -->
+                            <br/>
+                            <div class="field">
+                                <strong>
+                                    <label for="select">Preferred Exercise Group:</label>
+                                </strong>
+                                <br>
+                                <div class="select">
+                                    <select name="select_exercise" id="select_exercise_group">
+                                        <option value="Choose Exercise Group" selected disabled>Choose Exercise Group</option>
+                                        <option value="Team Outdoors">Team Outdoors</option>
+                                        <option value="Team Indoors">Team Indoors</option>
+                                        <option value="Solo Water">Solo Water</option>
+                                        <option value="Team Water">Team Water</option>
+                                        <option value="Running/Jogging/Walking">Running/Jogging/Walking</option>
+                                        <option value="Chores">Chores</option>
+                                        <option value="Solo Outdoors">Solo Outdoors</option>
+                                        <option value="Solo Indoors">Solo Indoors</option>
+                                        <option value="Miscellaneous">Miscellaneous</option>
+                                    </select>
+                                </div>
+                                <!-- Exercise Group -->
+                                <div class="control"> </div>
+                            </div>
+                            <!-- Exercise Group big -->
+                        </div>
+                        <br>
+                        <!-- ___________________________________________________________________ __ Calculate Exercises ____________________________________  -->
+                        <div class="control">
+                            <button id="showexercises" class="button is-link">Calculate</button>
+                            <button class="button is-warning" onclick="document.location='/index.html';">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- column 1 -->
+                <div class="column">
+                    <!-- Div holding Exercises -->
+                    <div style="text-align:center;">
+                        <h2>
+                            <strong>List of Recommended Exercises</strong>
+                        </h2>
+                        <br>
+                        <div class="select"> 
+                            <select id="select_exercises" onchange="setExerciseImage();">
+                                <option value="Choose Exercise Group" selected disabled>Choose Exercise Group</option>
+                            </select>
+                        </div>
+                        <br/>
+						<div>
+						<br/>
+						<!--You have selected X# of Exercises<br/> -->
+						<!--These Exercises will burn X# of Calories-->
+						<div id="exercisetext" style="display: none;">
+						You have selected <span id="selectedexr"></span><br/> 
+						It will burn <span id="selectedexrcal"></span> calories.<br/> 
+</div>
+						
+						</div>
+						<br/>
+                        <div>
+                            <img style="border-radius:10px; border:2px solid black display:none;" id="exercise_image" src="" alt="" width="550"
+                                height="700" >
+                        </div>
+                        <!-- <label>
+                            <input type="checkbox" name="Recommended Exercises" value="checkbox" id="RecommendedExercises_0"> Exercise 1</label>
+                        <br>
+                        <label>
+                            <input type="checkbox" name="Recommended Exercises" value="checkbox" id="RecommendedExercises_1"> Exercise 2</label>
+                        <br> -->
+                    </div>
+                </div>
+                <!-- column 2 -->
+            </div>
+            <!-- columns -->
+        </div>
+        <!-- container -->
+    </section>
+</body>
+</html>

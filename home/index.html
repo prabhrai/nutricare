@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutricare Food & Exercise</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+    <script src="../../../javascript/jquery-3.2.1.js"></script>
+    <script src="../../../javascript/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+</head>
+
+<body onload="loadPage('Home');">
+    <!-- _____________________________________________________________________ nav __________________  -->
+    <nav class="navbar is-light">
+        <div class="navbar-brand">
+            <!-- <a class="navbar-item" ></a> -->
+                <h1 style="color:#00D1B2; font-weight:bolder; font-size:30px;font-style:italic;">NutriCare</h1>
+            
+            <!--<div class="navbar-burger burger" data-target="navMenuColorlight-example">-->
+            <!--    <span></span>-->
+            <!--    <span></span>-->
+            <!--    <span></span>-->
+            <!--</div>-->
+        </div>
+        <div id="navMenuColorlight-example" class="navbar-menu">
+            <div class="navbar-start">
+                <!-- <a class="navbar-item" href="https://nutricare.xyz" style="color:black;font-size:20px;">
+                    <span class="icon">
+                        <i class="fa fa-home"></i>
+                    </span>
+                    Home
+                </a> -->
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="field is-grouped">
+                        <p class="control" id="logout">
+                            <a class="button is-warning">
+                                <span class="icon">
+                                    <i class="fa  fa-sign-out "></i>
+                                </span>
+                                <span>Logout</span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- _____________________________________________________________________ BODY  ____________________________________  -->
+    <!-- _____________________________________________________________________ BODY  ____________________________________  -->
+    <!-- _____________________________________________________________________ BODY  ____________________________________  -->
+    <!-- _____________________________________________________________________ BODY  ____________________________________  -->
+
+
+    <!-- _____________________________________________________________________ BODY START ____________________________________  -->
+    <section class="section">
+        <div class="container" style="margin-top:-40px;">
+            <div class="notification" style="text-align: center; font-size: 25px;">
+                <p>
+                    <strong> NutriCare</strong>
+                </p>
+            </div>
+            <!-- Div holding Text Fields -->
+            <div class="columns">
+                <div class="column is-5">
+                    <!-- style="text-align:center;" -->
+                    <div style=" margin-left: 15%; ">
+                        <div class="control">
+                            <!-- _____________________________________________________________________ Food ____________________________________  -->
+                            <label class="label">Food</label>
+                            <div id="food_list" class="select is-primary">
+                                <select id="food_item_list" class="is-focused" style="width:250px" onchange="setCalories();">
+                                    <!--<option>List of food items appear here</option>-->
+                                </select>
+                            </div>
+                        </div>
+                        <!--</div>-->
+                        <!--</select>-->
+                        <!-- _____________________________________________________________________ Quantity ____________________________________  -->
+                        <div class="field">
+                            <br/>
+                            <label class="label">Quantity</label>
+                            <div class="control">
+                                <input id="Quantity" class="input" type="text" value="1" style="width:250px" disabled> 
+                                <!--  -->
+                                <img id="add1" src="../images/plus.png" width="32" height="25" class="add" />
+                                <img id="minus1" src="../images/minus.png" width="32" height="25" class="minus" />
+                            </div>
+                            <div class="field">
+                                <br/>
+                                <label class="label">Calories</label>
+                                <div class="control">
+                                    <input id="Calories" class="input" type="text" placeholder="125" style="width:250px" disabled>
+                                </div>
+                            </div>
+                            <!-- _____________________________________________________________________ Preferred ____________________________________  -->
+                            <br/>
+                            <div class="field">
+                                <strong>
+                                    <label for="select">Preferred Exercise Group:</label>
+                                </strong>
+                                <br>
+                                <div class="select">
+                                    <select name="select_exercise" id="select_exercise_group">
+                                        <option value="Choose Exercise Group" selected disabled>Choose Exercise Group</option>
+                                        <option value="Team Outdoors">Team Outdoors</option>
+                                        <option value="Team Indoors">Team Indoors</option>
+                                        <option value="Solo Water">Solo Water</option>
+                                        <option value="Team Water">Team Water</option>
+                                        <option value="Running/Jogging/Walking">Running/Jogging/Walking</option>
+                                        <option value="Chores">Chores</option>
+                                        <option value="Solo Outdoors">Solo Outdoors</option>
+                                        <option value="Solo Indoors">Solo Indoors</option>
+                                        <option value="Miscellaneous">Miscellaneous</option> 
+                                        <option value="Custom">Custom</option>
+                                        
+                                    </select>
+                                </div>
+                                <!-- Exercise Group -->
+                                <div class="control"> </div>
+                            </div>
+                            <!-- Exercise Group big -->
+                        </div>
+                        <br/>
+                        <!-- ___________________________________________________________________ __ Calculate Exercises ____________________________________  -->
+                        <div class="control">
+                            <button id="addFoodLog" class="button is-primary">Add to Log</button>
+
+                            <button id="showexercises" class="button is-link">Find Exercises</button>
+                            <img id="loadImg" src="../images/loading1.gif" width="40" height="40" style="display:none;">
+                        </div>
+
+                        <br/>
+                        <div class="control">
+                            <button id="show_add_food" class="button is-primary">Add custom Food Item</button>
+                        </div>
+
+                        <div id="field_customFoodName" class="field" style="display:none;">
+                            <br/>
+                            <label class="label">Food Name</label>
+                            <div class="control">
+                                <input id="customFoodName" class="input" type="text" placeholder="" style="width:250px">
+                            </div>
+                        </div>
+
+
+                        <div id="field_customFoodCal" class="field" style="display:none;">
+                            <br/>
+                            <label class="label">Food Calories</label>
+                            <div class="control">
+                                <input id="customFoodCal" class="input" type="text" placeholder="" style="width:250px">
+                            </div>
+                            <br/>
+
+                            <button id="addCustomFood" class="button is-primary">Add custom Food Item</button>
+                            <button id="cancelAddCustomFood" class="button is-warning">Cancel</button>
+
+                        </div>
+
+
+
+                        <!-- <div class="column is-4" style="margin-left:5%;margin-right:5%"> 
+                        </div>
+                             -->
+                        <div style="margin-top:20px;">
+                            <br/>
+                            <table style="border: 1px; height:700px; display: inline-block;  overflow:auto;" id="flogtable" class="table is-bordered is-striped is-narrow is-hoverable">
+                                <thead>
+                                    <tr>
+                                        <th>Food Name</th>
+                                        <th>Date</th>
+                                        <!-- <th>Calories</th> -->
+                                        <th>Quantity</th>
+                                        <th>Total Calories</th>
+
+                                    </tr>
+                                </thead>
+
+                                <tbody id="flogrow">
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+
+                        <!-- <div style="margin-top:20px;">
+                            <canvas id="flog_chart" width="200px" height="200px"></canvas>
+                        </div> -->
+
+
+                    </div>
+
+
+
+
+                </div>
+                <!-- column 1 -->
+                <div class="column">
+                    <!-- Div holding Exercises -->
+                    <div style="text-align:center; margin-left: 10%;">
+                        <h2>
+                            <strong>List of Recommended Exercises</strong>
+                        </h2>
+                        <div id="loadMsg" style="display:none;">
+                            <h2>
+                                <strong>Loading Exercises...</strong>
+                            </h2>
+                        </div>
+                        <br>
+                        <div class="select">
+                            <select id="select_exercises" onchange="setExerciseImage();">
+                                <option value="Choose Exercise Group" selected disabled>Choose Exercise Group</option>
+                            </select>
+                        </div>
+                        <br/>
+                        <div>
+                            <br/>
+                            <!--You have selected X# of Exercises<br/> -->
+                            <!--These Exercises will burn X# of Calories-->
+                            <div id="exercisetext" style="display: none;">
+                                You have selected
+                                <span id="selectedexr"></span>
+                                <br/> It will burn
+                                <span id="selectedexrcal"></span> calories.
+                                <br/>
+                            </div>
+
+                        </div>
+                        <br/>
+                        <div> 
+                            <div id="img_holder" style="margin-top:200px;"></div>
+                            <img style="border-radius:10px; display:none;" id="exercise_image" alt="" width="550" height="500">
+                        </div>
+                        <br/>
+                        <br/>
+  
+                        <button id="add_exer_log" class="button is-primary">Add Exercise to Log</button>
+                        <!-- <button class="button is-warning" onclick="document.location='/index.html';">Cancel</button> -->
+
+                        <!-- <label>
+                            <input type="checkbox" name="Recommended Exercises" value="checkbox" id="RecommendedExercises_0"> Exercise 1</label>
+                        <br>
+                        <label>
+                            <input type="checkbox" name="Recommended Exercises" value="checkbox" id="RecommendedExercises_1"> Exercise 2</label>
+                        <br> -->
+
+                        <br/>
+                        <br/>
+                        
+                        <div style="text-align:left; margin-left:20%;margin-right:20%;">
+
+                            <div class="control">
+                                <button id="show_add_exercise" class="button is-primary">Add custom Exercise Item</button>
+                            </div>
+
+                            <div id="field_customExerciceName" class="field" style="display:none;">
+                                <br/>
+                                <label class="label">Exercise Name</label>
+                                <div class="control">
+                                    <input id="customExerciceName" class="input" type="text" placeholder="" style="width:250px">
+                                </div>
+                            </div>
+
+
+                            <div id="field_customExerciceCal" class="field" style="display:none;">
+                                <br/>
+                                <label class="label">Exercise Calories</label>
+                                <div class="control">
+                                    <input id="customExerciceal" class="input" type="text" placeholder="" style="width:250px">
+                                </div>
+                                <br/>
+
+                                <button id="addCustomExercice" class="button is-primary">Add custom Exercise Item</button>
+                                <button id="cancelAddCustomExercice" class="button is-warning">Cancel</button>
+
+                            </div>
+
+                        </div> 
+                        <!-- add exercise -->
+
+                        <div>
+
+                            <br/>
+                            <br/>
+
+                            <table style="border: 1px; height:700px; display: inline-block;  overflow:auto;" id="elogtable" class="table is-bordered is-striped is-narrow is-hoverable is-hoverable">
+                                <thead>
+                                    <tr>
+                                        <th>Exercise Name</th>
+                                        <th>Date</th>
+                                        <th>Calories Burned</th>
+
+
+                                    </tr>
+                                </thead>
+
+                                <tbody id="elogrow">
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- column 2 -->
+            </div>
+            <!-- columns -->
+        </div>
+        <!-- container -->
+
+
+        <div style="margin:0 12%;">
+            <canvas id="elog_chart" width="600px" height="400px"></canvas>
+        </div>
+
+
+    </section>
+</body>
+
+</html>

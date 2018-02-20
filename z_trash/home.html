@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Nutricare Welcome Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+  <script src="../javascript/jquery-3.2.1.js"></script>
+  <script src="../javascript/main.js"></script>
+
+</head>
+
+<body>
+<section class="section">
+     
+      <div class="container">
+          <div class="notification" style="text-align: center; font-size: 25px;">
+            <p><strong> NutriCare</strong></p>
+          </div>
+     </div> 
+    
+    <!-- Div holding Check Boxes -->
+    <div style="width:35%; margin-top:30px; margin-left: 60%">
+      <h2><strong>List of Recommended Exercises</strong></h2>
+      <br>
+    <label>
+      <input type="checkbox" name="Recommended Exercises" value="checkbox" id="RecommendedExercises_0">
+      Exercise 1</label>
+    <br>
+    <label>
+      <input type="checkbox" name="Recommended Exercises" value="checkbox" id="RecommendedExercises_1">
+      Exercise 2</label>
+    <br>
+  <div class="Pic1"><img src="swimming.jpg" alt="" style="float: left"></div>
+  <div class="Pic2"><img src="swimming.jpg" alt="" style="float: right"></div>
+  <div class="Pic3"><img src="swimming.jpg" alt="" style="float:left"></div>
+  <div class="Pic4"><img src="swimming.jpg" alt="" style="float: right"></div>
+  </div>    
+    <!-- Div holding Text Fields -->
+    <div class="container" style="width:35%; margin-right: 60%">
+       
+      <!-- .......................................................... Username ............................. -->
+ 
+      <div class="field">
+        <label class="label">Food<br>
+        </label>
+        <div class="control has-icons-left ">
+          <input id="Food" class="input " type="text" placeholder="">
+          <!-- is-success -->
+        </div>
+        <!-- <p class="help is-success">This username is available</p> -->
+      </div>
+
+
+
+      <div class="field">
+        <label class="label">Calories</label>
+        <div class="control">
+          <input id="Calories" class="input" type="text" placeholder="">
+        </div>
+      </div>
+
+
+      <div class="field">
+        <label class="label">BMI</label>
+        <div class="control">
+          <input id="BMI" class="input" type="text" placeholder="">
+        </div>
+      </div>
+
+ <div class="field">
+   <strong>
+   <label for="select">Choose Exercise Group:</label>
+   </strong>
+  <select name="select" id="select">
+  <option value="Team Outdoors">Team Outdoors</option>
+  <option value="Team Indoors">Team Indoors</option>
+  <option value="Solo Outdoors">Solo Outdoors</option>
+  <option value="Solo Indoors">Solo Indoors</option>
+  </select>
+  <div class="control"> </div>
+</div>
+    <!--
+     <div class="field">
+        <label class="label">Email</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input" type="email" placeholder="Email input">
+          <!- - is-danger - ->
+          <span class="icon is-small is-left">
+            <i class="fa fa-envelope"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fa fa-warning"></i>
+          </span>
+        </div> -->
+        <!-- <p class="help is-danger">This email is invalid</p>
+      </div>  -->
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button id="submit_reg"  class="button is-link">Calculate</button>
+        </div>
+        <div class="control">
+          <button class="button is-text" onclick="document.location='/index.html';">Cancel</button>
+        </div>
+	 </div>
+    </div>
+    
+  </section>
+</body>
